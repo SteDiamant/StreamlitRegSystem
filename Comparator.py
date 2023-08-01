@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def read_data():
-    df = pd.read_csv('data/SamSamMayProducts.csv')#This data are for a single week
+    df = pd.read_csv('data/roducts.csv')#This data are for a single week
     return df
 def main():
     df=read_data()

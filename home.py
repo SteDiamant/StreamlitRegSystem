@@ -3,6 +3,8 @@ from database import User
 import pandas as pd
 from MontlyReport import main as ds_main
 from Comparator import main as comp_main
+
+# Create containers for different sections of the app
 dashboard = st.container()
 headerSection = st.container()
 mainSection = st.container()
@@ -11,22 +13,43 @@ logOutSection = st.container()
 registrationSection = st.container()
 comparatorSection = st.container()
 pagesMenuSection = st.container()
+
+
 # Implement your login and user authentication logic here.
 # Replace the function `login()` with your own implementation.
 # For example, you could use a database to verify credentials.
 def login(username, password):
+    """
+    Validate the user's credentials.
+
+    Parameters:
+        username (str): The entered username.
+        password (str): The entered password.
+
+    Returns:
+        bool: True if the user is authenticated, False otherwise.
+    """
     # Replace this with your authentication logic.
     user = User.login_user(username, password)
     if user:
         return True
     else:
         return False
+
+
 def show_dashboard_page():
+    """
+    Display the Dashboard page.
+    """
     with dashboard:
         st.title("Dashboard")
         ds_main()
 
+
 def show_main_page():
+    """
+    Display the Main page.
+    """
     with mainSection:
         dataFile = st.text_input("Enter your Test file name: ")
         Topics = st.text_input("Enter your Model Name: ")
@@ -37,16 +60,29 @@ def show_main_page():
 
 
 def LoggedOut_Clicked():
+    """
+    Perform actions when the Log Out button is clicked.
+    """
     st.session_state['loggedIn'] = False
 
 
 def show_logout_page():
+    """
+    Display the Log Out page.
+    """
     loginSection.empty()
     with logOutSection:
         st.sidebar.button("Log Out", key="logout", on_click=LoggedOut_Clicked)
 
 
 def LoggedIn_Clicked(userName, password):
+    """
+    Perform actions when the Login button is clicked.
+
+    Parameters:
+        userName (str): The entered username.
+        password (str): The entered password.
+    """
     if login(userName, password):
         st.session_state['loggedIn'] = True
     else:
@@ -55,19 +91,26 @@ def LoggedIn_Clicked(userName, password):
 
 
 def show_login_page():
+    """
+    Display the Login page.
+    """
     with loginSection:
         if not st.session_state['loggedIn']:
             userName = st.sidebar.text_input(label="", value="", placeholder="Enter your user name", key="userName_login")
-            password = st.sidebar.text_input(label="", value="", placeholder="Enter password", type="password", key="password_login")
+            password = st.sidebar.text_input(label="", value="", placeholder="Enter password", type="password",
+                                             key="password_login")
             st.sidebar.button("Login", on_click=LoggedIn_Clicked, args=(userName, password))
 
 
 def registrationSection_page():
+    """
+    Display the Registration page.
+    """
     name = st.sidebar.text_input("Username")
     email = st.sidebar.text_input("Email")
     password = st.sidebar.text_input("Password", type="password")
     verify_password = st.sidebar.text_input("Verify Password", type="password")
-    
+
     submit_button = st.sidebar.button('Register')
     if submit_button:
         if password == verify_password:
@@ -78,7 +121,10 @@ def registrationSection_page():
             st.error("Passwords do not match. Please try again.")
 
 
-def show_users_db():  
+def show_users_db():
+    """
+    Display the Update Information page.
+    """
     users = User.all_users()
     st.title("Update Information")
     if users is not None:
@@ -112,36 +158,42 @@ def show_users_db():
 
     if st.button("Delete Empty Usernames", key='delete_empty_usernames'):
         User.delete_empty_usernames()
-  
+
+
 def show_comparator_page():
+    """
+    Display the Comparator page.
+    """
     with comparatorSection:
         st.title("Comparator")
         comp_main()
 
 
 def show_pages_menu():
-        st.sidebar.title("Menu")
-        selection = st.sidebar.radio("Go to", ["Update Information", "Montly Overview", "Comparator Tool"])
-        if selection == "Update Information":
-            show_users_db()
-        elif selection == "Montly Overview":
-            show_dashboard_page()
-        elif selection == "Comparator Tool":
-            show_comparator_page()
-        else:
-            st.title("Home Page")
-            st.write("Welcome to the home page!")
-
-
+    """
+    Display the pages menu.
+    """
+    st.sidebar.title("Menu")
+    selection = st.sidebar.radio("Go to", ["Update Information", "Monthly Overview", "Comparator Tool"])
+    if selection == "Update Information":
+        show_users_db()
+    elif selection == "Monthly Overview":
+        show_dashboard_page()
+    elif selection == "Comparator Tool":
+        show_comparator_page()
+    else:
+        st.title("Home Page")
+        st.write("Welcome to the home page!")
 
 
 def main():
-    
-    menu_selection = st.sidebar.radio("Menu", ["Register", "Login"],key="menu")
+    """
+    Main function to run the Streamlit app.
+    """
+    menu_selection = st.sidebar.radio("Menu", ["Register", "Login"], key="menu")
 
     if menu_selection == "Register":
-            registrationSection_page()
-
+        registrationSection_page()
     else:  # "Login" is selected
         if 'loggedIn' not in st.session_state:
             st.session_state['loggedIn'] = False
@@ -150,7 +202,7 @@ def main():
             show_pages_menu()
         else:
             show_login_page()
-    
+
 
 if __name__ == "__main__":
     main()
