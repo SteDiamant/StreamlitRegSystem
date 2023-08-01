@@ -74,7 +74,7 @@ def filter_by_category(df, category):
     """
     return df[df['category'] == category]
 
-def visualize_top_10_products(df, identifier):
+def visualize_top_10_products(df, identifier,no_of_products):
     """
     Visualize the top 10 products by revenue in a bar chart.
 
@@ -86,7 +86,7 @@ def visualize_top_10_products(df, identifier):
     grouped_df = df.groupby('product_name').sum()[identifier].sort_values(ascending=False)
 
     # Select the top 10 products
-    top_10_products = grouped_df.head(10)
+    top_10_products = grouped_df.head(no_of_products)
 
     fig, ax = plt.subplots(figsize=(15, 5))
     ax.bar(top_10_products.index, top_10_products)
@@ -108,8 +108,8 @@ def main():
     # Filter and visualize the DataFrame based on the selected products
     if selected_products:
         visualize_revenue_by_product(df, selected_products,identifier)
-        identifier1 = st.radio('Select identifier', ['food', 'drinks','unknown','unasigned'],horizontal=True)
-        st.slider
-        st.pyplot(visualize_top_10_products(filter_by_category(df, identifier1),identifier))
+    identifier1 = st.radio('Select identifier', ['food', 'drinks','unknown','unasigned'],horizontal=True)
+    no_products=st.slider('Top', 0, 25, 10)
+    st.pyplot(visualize_top_10_products(filter_by_category(df, identifier1),identifier,no_products))
 if __name__ == "__main__":
     main()
