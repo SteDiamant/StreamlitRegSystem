@@ -1,0 +1,306 @@
+﻿index,product_name,amount,revenue
+1,Koffie              ,2075,5187.1
+2,Ceylanthee          ,91,227.5
+3,Cappuccino          ,2572,6943.6
+4,Koffie verkeerd     ,104,312
+5,Espresso            ,263,657.5
+6,Dubbele koffie      ,26,119.6
+7,Dubbele Cappuccino  ,23,112.7
+8,Dubbele Espresso    ,91,418.6
+9,Kan Koffie          ,10,180
+10,Ristretto           ,1,2.5
+11,Decaf Koffie        ,30,75
+12,Decafe Cappucino    ,50,135
+13,Deca koffie verkeerd,2,6
+14,Decafe espresso     ,3,7.5
+15,Irish coffee        ,12,102
+16,French coffee       ,5,42.5
+17,Espresso Macchiato  ,25,62.5
+18,Spanish Coffee      ,6,51
+19,Kan Thee            ,5,75
+20,Verse gemberthee    ,281,899.2
+21,Radler 0.0          ,211,738.5
+22,Jardin Bluethee     ,21,52.5
+23,Rooibosthee         ,149,372.5
+24,Liefmans Fruitesse  ,194,873
+25,Grolsch Radler      ,212,741.45
+26,Kamille thee        ,25,62.5
+27,Pils                ,2036,6918.85
+28,Fluitje             ,52,166.4
+29,Halve liter         ,459,3119.15
+30,Weizenbock          ,4,20
+31,Grolsch 0%          ,175,612.5
+32,Duvel               ,70,350
+33,Chai Tea Latte      ,143,543.4
+34,Filmclub koffie     ,347,520.5
+35,Weizen Klein        ,938,4687.75
+36,Filmclub thee       ,156,234
+37,Gunnen Vert thee    ,232,580
+38,Earl Greythee       ,218,545
+39,Weizen Groot        ,738,5902.8
+40,Decaf Latte Macchiat,15,45
+41,Latte Macchiato     ,661,1982.55
+42,Cola                ,1249,3495.95
+43,Tonic               ,150,420
+44,Ginger Ale          ,140,447.5
+45,Bitter lemon        ,144,403.2
+46,Ginger Beer         ,152,486.4
+47,Grote Cola          ,7,28
+48,Appel/Spa           ,29,87
+49,Fanta               ,216,604.8
+50,Rivella             ,247,691.6
+51,Sprite              ,106,296.8
+52,Cola Zero           ,955,2674
+53,Cassis              ,151,422.4
+54,Beugel              ,14,77
+55,Chocomel warm       ,60,222
+56,Chocomel koud       ,64,179.2
+57,Fristi              ,138,386.4
+58,Ranja               ,95,190
+59,Melk                ,18,50.4
+60,Karnemelk           ,22,61.6
+61,Liefmans 0.0        ,86,387
+62,0.50 Karaf Water    ,58,0
+63,1.00 karaf Water    ,70,0
+64,Glas Water          ,2083,0
+65,Chocomel Slagroom   ,57,238.75
+66,Sauvignon Blanc glas,507,2078.7
+67,Grolsch Weizen 0.0  ,309,1390.5
+68,Grote Cola Zero     ,5,20
+69,Pinot Grigio        ,1090,4469
+70,Hugo                ,15,75
+71,Bio Vlierbes        ,84,327.6
+72,Bio Citroen         ,70,273
+73,Fles Prosecco       ,9,202.5
+74,Prosecco            ,55,275
+75,Koninck             ,40,180
+76,Speciaal drankje L  ,2,238.8
+77,Sangiovese delle Mar,129,528.9
+78,Bio Gember/sinas    ,66,257.4
+79,Kombucha            ,49,200.9
+80,Rode Port           ,11,44
+81,Witte Port          ,2,8
+82,Limoncello shot     ,36,144
+83,Crodino             ,46,161
+84,Campari             ,2,9
+85,Jasmijnthee         ,63,157.5
+86,Jonge Jenever       ,4,12
+87,Oude jenever        ,2,6
+88,Jagermeister        ,10,40
+89,Wodka               ,21,94.5
+90,Berenburg           ,14,55.4
+91,Bacardi Cola        ,24,192
+92,Amaretto            ,14,63
+93,Tia Maria           ,1,4.5
+94,Baileys             ,8,35.3
+95,Grand Marnier       ,3,13.5
+96,Aperol Spritz       ,937,5613
+97,Cointreau           ,2,9
+98,Drambuie            ,2,9
+99,Licor 43            ,6,27
+100,Brownie glutenvrij  ,7,27.4
+101,Southern Comfort    ,2,9
+102,Malibu              ,5,22.5
+103,Johnnie Walker Red  ,7,31.5
+104,Johnnie Walker Black,30,165
+105,Laphroaigh          ,6,33
+106,Glenfiddich 12Y     ,31,170.5
+107,Courvoisier         ,5,25
+108,Calvados            ,1,7.2
+109,Armagnac            ,1,5
+110,Verse Muntthee      ,539,1723.3
+111,Extra slagroom      ,35,17.5
+112,Boterham/bol vlokken,5,7.5
+113,Boterham/bol ei     ,1,3
+114,Boterham/bol pindaka,5,7.5
+115,Boterham/bol Jam    ,3,4.5
+116,Boterham/bol kaas   ,4,7
+117,Gin Tonic           ,122,1098
+118,Limoncello Spritz   ,350,2100
+119,Gin Tonic 0%        ,25,200
+120,Kids Tomatensoep    ,5,15
+121,Peuterfrites        ,12,48
+122,Kids Groentenkrokets,3,22.5
+123,Kids Beefburgr doorb,3,22.5
+124,Kids krokante kip   ,30,225
+125,Kids Pannenkoek     ,73,547.5
+126,Kids Beefburgr mediu,18,135
+127,Kids Knakworst diner,38,285
+128,Broodje Knakwrst lun,17,59.5
+129,Snack Bitterballetje,2,6
+130,Snack poffertjes    ,25,75
+131,Kids Fish en chips  ,8,60
+132,Snack Frikadel      ,7,20.55
+133,Kids Broodje Kroket ,4,14
+134,Speciaalmenu        ,300,7138.8
+135,Ontbijt             ,43,537.5
+136,Lunch Speciaal      ,12,67
+137,Mazda Lunch         ,13,123.5
+138,Mazda koffie        ,2,11.2
+139,Kids kaassouffles   ,2,15
+140,Kinderijsje         ,9,12.6
+141,Slagroom            ,71,35.5
+142,Filmontbijt         ,16,0
+143,Daghap medew.       ,155,499.1
+144,Cadeau bon          ,12,501
+145,met Mayonaise       ,33,0
+146,Stokbrood vooraf!   ,23,0
+147,Tafel mee - keuken  ,231,0
+148,Satesaus met prijs  ,3,4.5
+149,Kids Frikadelletjes ,49,367.5
+150,Met Ketchup         ,287,0
+151,Met Curry           ,171,0
+152,Met Mayonaise       ,52,0
+153,met spek            ,115,115
+154,Witte thee          ,18,45
+155,Extra shot + 1      ,3,3.3
+156,TAFEL MEE Bar       ,2,0
+157,Haver i.p.v.        ,124,86.8
+158,Spa blauw           ,299,837.2
+159,Spa blauw GRO 0.75  ,31,186
+160,Spa rood            ,688,1926.4
+161,Spa rood GRO 0.75   ,58,348
+162,Wit Montcalm        ,8,232
+163,Closerie d'Ibry     ,2,70
+164,Rose Montcalm       ,9,261
+165,Charles Tyrand Eclip,3,87
+166,Domaine Charles Tyra,8,250
+167,Pinot grigio fles wi,40,960
+168,Sauvignon fles wit  ,10,240
+169,Sangiovese fles rood,1,24
+170,Fles zoet wit       ,1,24
+171,Fles Rose           ,40,960
+172,Italian coffee      ,6,48
+173,Cappu Ned           ,9,24.3
+174,Flat White          ,38,106.4
+175,Grimbergen Dubbel   ,74,370
+176,Grimbergen Tripel   ,86,430
+177,Grimbergen Blanche  ,247,1234.25
+178,Grimbergen Blond    ,469,2345
+179,Glutenvrij Broodje  ,65,32.5
+180,Grolsch session IPA ,76,342
+181,Classic Ice Tea     ,1116,4017.05
+182,Glas Rose           ,775,3174.4
+183,Green Ice Tea       ,2146,7722.85
+184,Glas Merlot         ,179,733.9
+185,Glas Wit Zoet       ,119,487.9
+186,Jus                 ,460,1608.9
+187,Ap. Pe. Fram.       ,92,322
+188,Appelsap            ,267,934.5
+189,Borrel box          ,463,4162.95
+190,Borrel box vega     ,9,81
+191,Breekbrood          ,216,1188
+192,Nacho's klein       ,475.5,3798
+193,Nacho's klein vega  ,120,958.8
+194,Kaas en worst       ,140,840
+195,Oude Kaas           ,16,96
+196,Warm Plukbrood      ,442,2647.95
+197,Garnalenkroketjes   ,69,655.5
+198,Bitterballen        ,398,3383
+199,Twente              ,417,3541.9
+200,Kiphaasjes          ,103,874.2
+201,Kaasloempiaatjes    ,176.5,1493.1
+202,Falafel & Hummus    ,28,210
+203,Geroosterde groenten,61,274.5
+204,Frites              ,708,3183.9
+205,Frisse salade       ,45,202.5
+206,Cafe steak          ,347,7113.5
+207,Nacho's groot       ,48,672
+208,Varkenssate         ,417,7708.1
+209,Nacho's groot VEGA  ,14,196
+210,Soep Sam Sam        ,14,70
+211,Eendenborst         ,80,1717.85
+212,Gele curry vegan    ,105,1680
+213,Sticky Lemon Chicken,280,5040
+214,Zalmfilet           ,118,2537
+215,Gravad Lax Voor     ,26,299
+216,Gyoza               ,95,707.9
+217,Carpaccio voor      ,129,1483.5
+218,Salade Krokante kip ,349,5178.5
+219,Loaded fries Rendang,343,7374.5
+220,Tosti kaas          ,144,648
+221,Tosti ham kaas      ,471,2113.25
+222,Tosti ham kaas anana,116,521.3
+223,Club Sandwich       ,492,4913
+224,Broodje Gravad Lax  ,295,2802.5
+225,Twentse Ham         ,66,627
+226,Broodje Carpaccio   ,306,3519
+227,Pistolet Kaas       ,14,63
+228,Waldkorn kaas       ,21,94.5
+229,Pistolet Ham        ,1,4.5
+230,Waldkorn Ham        ,4,18
+231,Pistolet Filet Ameri,36,216
+232,Waldkorn Filet Ameri,47,282
+233,Pistolet tonijnsalad,9,54
+234,Waldkorn Tonijnsalad,47,282
+235,Sweetbox            ,8,120
+236,Sam Sam Koffie      ,50,300
+237,Uitsmijter          ,270,2565
+238,Een kroket+brood    ,116,637.15
+239,Twee kroket+brood   ,285,2419.95
+240,Tuna melt           ,255,2415.3
+241,Broodje kaas        ,5,22.5
+242,Broodje beenham     ,18,81
+243,Br Tonijnsalade AVE ,17,102
+244,Sam Sammertje       ,27,121.5
+245,Appeltaart          ,350,1575
+246,Cheesecake rood frui,207,931.5
+247,Cheesecake caramel  ,21,93.8
+248,Worteltaart         ,97,436.5
+249,Brownie             ,21,84
+250,Brownie             ,166,745.6
+251,Arretjescake        ,214,963
+252,Red Velvet Cake     ,107,480.1
+253,Vegan Banana cake   ,67,301.5
+254,Dadeltaart          ,41,184.5
+255,Walking dinner desse,3,25.5
+256,Parfait             ,36,162
+257,Limoncello Cheesecak,84,378
+258,tijd: 16:00         ,25,0
+259,tijd: 16:15         ,34,0
+260,tijd: 16:30         ,36,0
+261,tijd: 17:00         ,34,0
+262,tijd: 17:15         ,9,0
+263,tijd: 17:30         ,10,0
+264,Sneeuwwitje         ,4,12.8
+265,Theeglas heet water ,19,19
+266,Zoete frites IPV    ,4,14
+267,IJskoffie           ,46,184
+268,Daghap Aspen        ,8,40
+269,Tosti Ham           ,6,27
+270,Latte met siroop    ,78,312
+271,Broodje warm vlees  ,161,1529.5
+272,Banh Mi Seitan      ,62,589
+273,Banh Mi Kip         ,162,1539
+274,12 uurtje           ,304,2888
+275,Flammkuchen         ,191,1813.05
+276,Mosterdsoep         ,134,603
+277,Ramen buikspek      ,65,617.5
+278,Ramen tofu          ,46,437
+279,Bouillabaisse       ,32,304
+280,Soep Sam Sam        ,136,680
+281,Soep Sam Sam GRO    ,22,198
+282,Salade Thaise Biefst,230,3335
+283,Salade Tabouleh     ,124,1798
+284,Big Burger + friet  ,453,8154
+285,Falafelburger+friet ,203,3451
+286,Rode curry          ,121,1936
+287,Kabeljauw           ,44,858
+288,Kophaas             ,94,1645
+289,Jack Fruit Rendang  ,92,1978
+290,Pancake             ,55,247.5
+291,Yog. bosvruchtenijs ,106,477
+292,Chik'n Nuggets      ,20,150
+293,Wisseltap           ,88,440
+294,Zoete aard. frites  ,58,433.85
+295,Big Burger Concordia,9,135
+296,Quinoa Burger Concor,4,60
+297,Kipsate Concordia   ,11,165
+298,Rode Curry Conc     ,1,15
+299,Jack Fruit Conc     ,5,75
+300,Halve p Bitterballen,24,101.35
+301,Halve p Garnalenkr  ,6,28.5
+302,Big Burger AVE      ,87,1348.5
+303,Falafelburger AVE   ,42,609
+304,Frites AVE          ,113,508.5
+305,Zomerdeal Borrelbox ,28,980
