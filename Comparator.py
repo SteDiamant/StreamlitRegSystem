@@ -9,7 +9,7 @@ def read_data():
     Returns:
         pd.DataFrame: The DataFrame containing the data.
     """
-    df = pd.read_csv('data\roducts.csv')  # This data is for a single week
+    df = pd.read_csv(r'data\roducts.csv')  # This data is for a single week
     return df
 
 def importLists():
