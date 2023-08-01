@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def read_data():
-    df = pd.read_csv('data\SamSamMayProducts.csv')#This data are for a single week
-    df1 = pd.read_csv('data\SamSamMayCashFlow.csv')#This data are for a single week
+    df = pd.read_csv(r'data\SamSamMayProducts.csv')#This data are for a single week
+    df1 = pd.read_csv(r'data\SamSamMayCashFlow.csv')#This data are for a single week
     return df,df1
 
 def importLists():
