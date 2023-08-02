@@ -185,12 +185,12 @@ def main():
     """
     Main function to run the Streamlit app.
     """
-    st.session_state['loggedIn'] = False
-    
+  
+    if 'loggedIn' not in st.session_state:
+        st.session_state['loggedIn'] = False
     if st.session_state['loggedIn']:
         show_logout_page()
         show_pages_menu()
-        
     else:
         show_login_page()
             
