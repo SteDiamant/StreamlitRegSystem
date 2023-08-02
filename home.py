@@ -1,5 +1,5 @@
 import streamlit as st
-from database import User
+from database import User, update_db
 import pandas as pd
 from PIL import Image
 from MontlyReport import main as ds_main
@@ -33,6 +33,7 @@ def login(username, password):
     # Replace this with your authentication logic.
     user = User.login_user(username, password)
     if user:
+        update_db()
         return True
     else:
         return False
@@ -152,6 +153,13 @@ def show_users_db():
 
     if st.button("Delete Empty Usernames", key='delete_empty_usernames'):
         User.delete_empty_usernames()
+    if st.button("Show Users",key='Show_Users'):
+        print(users[2][2])
+        user_data=[]
+        for user in users:
+            user_data.append([user[1],user[3]])
+        df = pd.DataFrame(user_data,columns=['Username','Email'])
+        st.dataframe(df)
 
 
 def show_comparator_page():

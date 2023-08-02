@@ -1,7 +1,7 @@
 import streamlit as st
 import sqlite3
 import hashlib
-
+import requests
 
 def create_users_table():
     """
@@ -40,6 +40,42 @@ def create_users_table():
         # If an SQLite error occurs during table creation, catch the exception and handle it.
         # Print the error for debugging purposes.
         print("Error occurred during table creation:", e)
+
+def update_db():
+        """
+        Update the database to the latest version from the GitHub repository.
+        """
+        try:
+            # Step 1: Clone the repository or fetch the latest changes from the remote repository
+            # For this example, we'll assume the repository URL is "https://github.com/username/repository.git"
+            repo_url = "https://github.com/SteDiamant/StreamlitRegSystem.git"
+
+            # You can use git or any version control tool to clone or fetch the latest changes.
+            # For simplicity, we'll use the requests library to fetch the contents of the update file.
+            update_url = f"{repo_url}/blob/master/users.db"  # Replace with the path to the update file.
+
+            response = requests.get(update_url)
+            if response.status_code == 200:
+                update_script = response.text
+            else:
+                raise Exception(f"Failed to fetch update script. HTTP status code: {response.status_code}")
+
+            # Step 2: Execute the update script or perform the necessary operations to update the database
+            with sqlite3.connect("users.db") as conn:
+                cursor = conn.cursor()
+                
+                # Execute the update script
+                cursor.executescript(update_script)
+
+                # Don't forget to commit the changes.
+                conn.commit()
+
+                print("Database updated successfully!")
+
+        except Exception as e:
+            print(f"Error updating the database: {e}")
+
+
 
 class User():
     @staticmethod
