@@ -1,6 +1,7 @@
 import streamlit as st
 from database import User
 import pandas as pd
+from PIL import Image
 from MontlyReport import main as ds_main
 from Comparator import main as comp_main
 
@@ -46,17 +47,6 @@ def show_dashboard_page():
         ds_main()
 
 
-def show_main_page():
-    """
-    Display the Main page.
-    """
-    with mainSection:
-        dataFile = st.text_input("Enter your Test file name: ")
-        Topics = st.text_input("Enter your Model Name: ")
-        ModelVersion = st.text_input("Enter your Model Version: ")
-        processingClicked = st.button("Start Processing", key="processing")
-        if processingClicked:
-            st.balloons()
 
 
 def LoggedOut_Clicked():
@@ -100,18 +90,20 @@ def show_login_page():
             password = st.sidebar.text_input(label="", value="", placeholder="Enter password", type="password",
                                              key="password_login")
             st.sidebar.button("Login", on_click=LoggedIn_Clicked, args=(userName, password))
+            st.image('imgs/logo_465x320.png', width=700)
 
 
 def registrationSection_page():
     """
     Display the Registration page.
     """
-    name = st.sidebar.text_input("Username")
-    email = st.sidebar.text_input("Email")
-    password = st.sidebar.text_input("Password", type="password")
-    verify_password = st.sidebar.text_input("Verify Password", type="password")
+    
+    name = st.text_input("Username")
+    email = st.text_input("Email")
+    password = st.text_input("Password", type="password")
+    verify_password = st.text_input("Verify Password", type="password")
 
-    submit_button = st.sidebar.button('Register')
+    submit_button = st.button('Register')
     if submit_button:
         if password == verify_password:
             User.register_user(name, password, email)
@@ -125,6 +117,8 @@ def show_users_db():
     """
     Display the Update Information page.
     """
+    st.title("Create Users")
+    registrationSection_page()
     users = User.all_users()
     st.title("Update Information")
     if users is not None:
@@ -165,7 +159,6 @@ def show_comparator_page():
     Display the Comparator page.
     """
     with comparatorSection:
-        st.title("Comparator")
         comp_main()
 
 
@@ -180,28 +173,27 @@ def show_pages_menu():
     elif selection == "Monthly Overview":
         show_dashboard_page()
     elif selection == "Comparator Tool":
-        show_comparator_page()
+        show_comparator_page()       
     else:
         st.title("Home Page")
         st.write("Welcome to the home page!")
-
+def show_samsam():
+    img=Image.open('imgs/logo_465x320.png')
+    st.image(img, width=700)
 
 def main():
     """
     Main function to run the Streamlit app.
     """
-    menu_selection = st.sidebar.radio("Menu", ["Register", "Login"], key="menu")
-
-    if menu_selection == "Register":
-        registrationSection_page()
-    else:  # "Login" is selected
-        if 'loggedIn' not in st.session_state:
-            st.session_state['loggedIn'] = False
-        if st.session_state['loggedIn']:
-            show_logout_page()
-            show_pages_menu()
-        else:
-            show_login_page()
+    
+    
+    if st.session_state['loggedIn']:
+        show_logout_page()
+        show_pages_menu()
+        
+    else:
+        show_login_page()
+            
 
 
 if __name__ == "__main__":

@@ -104,11 +104,11 @@ def main():
     st.title('Product Comparison based on Revenue')
 
     selected_products = st.multiselect('Select products', df['product_name'])
-    identifier = st.radio('Select identifier', ['amount', 'revenue'],horizontal=True)
+    identifier = st.radio('Select between amount sold or revenue per product', ['amount', 'revenue'],horizontal=True)
     # Filter and visualize the DataFrame based on the selected products
     if selected_products:
         visualize_revenue_by_product(df, selected_products,identifier)
-    identifier1 = st.radio('Select identifier', ['food', 'drinks','unknown','unasigned'],horizontal=True)
+    identifier1 = st.radio('Select category', ['food', 'drinks','unknown','unasigned'],horizontal=True)
     no_products=st.slider('Top', 0, 25, 10)
     st.pyplot(visualize_top_10_products(filter_by_category(df, identifier1),identifier,no_products))
 if __name__ == "__main__":
