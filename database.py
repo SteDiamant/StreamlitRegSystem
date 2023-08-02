@@ -421,6 +421,59 @@ class GitfCards():
         conn.commit()
         conn.close()
 
+
+class Invoice():
+    @staticmethod
+    def create_invoice_table():
+        """
+        Create the 'invoices' table in the 'invoices.db' SQLite database if it doesn't exist.
+        """
+        conn=sqlite3.connect('invoices.db')
+        c=conn.cursor()
+        # Create a table to store the invoice data
+        c.execute('''CREATE TABLE IF NOT EXISTS invoices(name TEXT NOT NULL,
+                  email TEXT NOT NULL,
+                  amount INTEGER NOT NULL,
+                  description TEXT NOT NULL,
+                  date TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)''')
+        conn.commit()
+        conn.close()
+    @staticmethod
+    def get_all_data():
+        conn = sqlite3.connect('invoices.db')
+        c = conn.cursor()
+        # Get all the data from the table
+        c.execute('SELECT * FROM invoices')
+        data = c.fetchall()
+        conn.close()
+        return data
+    @staticmethod
+    def insert_data(debiteur_name, debiteur_email,description,amount):
+        conn = sqlite3.connect('invoices.db')
+        c = conn.cursor()
+        # Insert the data into the table
+        c.execute('INSERT INTO invoices (name, email, description, amount) VALUES (?, ?, ?, ?)', (debiteur_name, debiteur_email, description, amount))
+        conn.commit()
+        conn.close()
+    @staticmethod
+    def update_data(debiteur_name, debiteur_email, amount, selected_date):
+        """
+        Update the invoice data in the database for the selected date
+
+        Parameters:
+            debiteur_name (str): The name of the debiteur.
+            debiteur_email (str): The email of the debiteur.
+            amount (int): The amount of the invoice.
+            selected_date (str): The date when the invoice data is added to the table.
+        """
+        conn = sqlite3.connect('invoices.db')
+        c = conn.cursor()
+        # Update the data in the table
+        c.execute('UPDATE invoices SET name=?, email=?, amount=? WHERE date=?', (debiteur_name, debiteur_email, amount, selected_date))
+        conn.commit()
+        conn.close()
+
+
 class Card():
     @staticmethod
     def create_db():

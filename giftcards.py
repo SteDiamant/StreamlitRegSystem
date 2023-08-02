@@ -11,6 +11,7 @@ def new_giftcard_ppayment():
         amount=st.number_input("Amount")
         if st.form_submit_button(label='Submit'):
             GitfCards.insert_data(descrtption,source,amount)
+            st.success('Gift Card Created!')
 def update_giftcard_payments():
     """
     Filter the card payments by date.
@@ -37,15 +38,10 @@ def update_giftcard_payments():
         # Create input fields for updating the data
         updated_description = st.text_area("Description", value=selected_row['Description'])
         updated_source = st.text_input("Source", value=selected_row['Source'])
-        updated_amount = st.number_input("Amount", value=selected_row['Amount'])
+        updated_amount = st.number_input("Amount",min_value =0, value=selected_row['Amount'])
         
         if st.form_submit_button(label='Update'):
-            # Update the data in the database
-            # Here, you need to implement the update logic for the GitfCards table based on your database system.
-            # For example, if you're using SQLAlchemy, you would perform an update operation on the corresponding row.
-            # Replace the following line with your database update logic.
             GitfCards.update_data(selected_description, updated_description, updated_source, updated_amount)
-            
             st.success('Data updated successfully!')
 
        

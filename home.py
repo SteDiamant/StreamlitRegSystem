@@ -6,6 +6,8 @@ from MontlyReport import main as ds_main
 from Comparator import main as comp_main
 from card_payments import new_card_ppayment ,update_card_payments
 from giftcards import new_giftcard_ppayment ,update_giftcard_payments
+from debiteurs import new_invoice, update_invoice
+
 dashboard = st.container()
 headerSection = st.container()
 mainSection = st.container()
@@ -16,7 +18,7 @@ comparatorSection = st.container()
 pagesMenuSection = st.container()
 card_paymentsSection = st.container()
 gift_card_paymentsSection = st.container()
-
+invoice_controlSection = st.container()
 
 # Implement your login and user authentication logic here.
 # Replace the function `login()` with your own implementation.
@@ -178,16 +180,26 @@ def show_card_payments_page():
     with card_paymentsSection:
         new_card_ppayment()
         update_card_payments()
+
 def gift_card_payments_page():
     with gift_card_paymentsSection:
         new_giftcard_ppayment()
         update_giftcard_payments()
+
+def show_invoice_control_page():
+    """
+    Display the Invoice Control page.
+    """
+    with invoice_controlSection:
+        new_invoice()
+        update_invoice()
+        
 def show_pages_menu():
     """
     Display the pages menu.
     """
     st.sidebar.title("Menu")
-    selection = st.sidebar.radio("Go to", ["Update Information", "Monthly Overview", "Compare Productrs","Card Payments","Gift Card Payments"])
+    selection = st.sidebar.radio("Go to", ["Update Information", "Monthly Overview", "Compare Productrs","Card Payments","Invoice Control","Gift Card Payments"])
     if selection == "Update Information":
         show_users_db()
     elif selection == "Monthly Overview":
@@ -198,6 +210,8 @@ def show_pages_menu():
         show_card_payments_page()  
     elif selection == "Gift Card Payments":
         gift_card_payments_page()    
+    elif selection == "Invoice Control":
+        show_invoice_control_page()
     
 def show_samsam():
     img=Image.open('imgs/logo_465x320.png')
