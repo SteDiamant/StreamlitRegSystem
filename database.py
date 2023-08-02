@@ -1,3 +1,4 @@
+
 import streamlit as st
 import sqlite3
 import hashlib
@@ -74,7 +75,6 @@ def update_db():
 
         except Exception as e:
             print(f"Error updating the database: {e}")
-
 
 
 class User():
@@ -350,3 +350,137 @@ class User():
 
             # Return None to indicate an error occurred during the operation.
             return None
+
+
+class GitfCards():
+    @staticmethod
+    def create_giftcard_table():
+        """
+        Create the 'giftcards' table in the 'giftcards.db' SQLite database if it doesn't exist.
+
+        The 'giftcards' table is used to store gift card data, including the description of the gift card,
+        the source of the gift card (where it was obtained from), the amount of the gift card, and the date
+        when the gift card data is added (current timestamp).
+
+        The table schema:
+            - Description (TEXT): Description or name of the gift card.
+            - source (TEXT): Source or origin of the gift card.
+            - amount (INTEGER): Amount of the gift card. It cannot be NULL.
+            - date (TIMESTAMP DATETIME): Date and time when the gift card data is added to the table.
+                                         It defaults to the current timestamp when not provided during insertion.
+
+        Note:
+        - The table will be created in the 'giftcards.db' database file. If the file doesn't exist, it will be created.
+        - If the 'giftcards' table already exists, this function will not create a new table and will do nothing.
+
+        Returns:
+        None
+        """
+        conn = sqlite3.connect('giftcards.db')
+        c = conn.cursor()
+        # Create a table to store the gift card data
+        c.execute('''CREATE TABLE IF NOT EXISTS giftcards
+                    (Description TEXT NOT NULL, 
+                    source TEXT NOT NULL,
+                    amount INTEGER NOT NULL,
+                    date TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)''')
+        conn.commit()
+        conn.close()
+    @staticmethod
+    def get_all_data():
+        conn = sqlite3.connect('giftcards.db')
+        c = conn.cursor()
+        # Get all the data from the table
+        c.execute('SELECT * FROM giftcards')
+        data = c.fetchall()
+        conn.close()
+        return data
+    @staticmethod 
+    def insert_data(description, source, amount):
+        conn = sqlite3.connect('giftcards.db')
+        c = conn.cursor()
+        # Insert the data into the table
+        c.execute('INSERT INTO giftcards (Description, source, amount) VALUES (?, ?, ?)', (description, source, amount))
+        conn.commit()
+        conn.close()
+    @staticmethod
+    def update_data(description, source, amount, selected_date):
+        """
+        Update the gift card data in the database for the selected date
+
+        Parameters:
+            description (str): The description of the gift card.
+            source (str): The source of the gift card.
+            amount (int): The amount of the gift card.
+            selected_date (str): The date when the gift card data is added to the table.
+        """
+        conn = sqlite3.connect('giftcards.db')
+        c = conn.cursor()
+        # Update the data in the table
+        c.execute('UPDATE giftcards SET description=?, source=?, amount=? WHERE date=?', (description, source, amount, selected_date))
+        conn.commit()
+        conn.close()
+
+class Card():
+    @staticmethod
+    def create_db():
+        conn = sqlite3.connect('card_payments.db')
+        c = conn.cursor()
+        # Create a table to store the payment counts
+        c.execute('''CREATE TABLE IF NOT EXISTS payments
+                    (visa INTEGER, mastercard INTEGER, maestro INTEGER, vpay INTEGER,
+                    total INTEGER, date TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)''')
+        conn.commit()
+        conn.close()
+
+    @staticmethod
+    def get_all_data():
+        conn = sqlite3.connect('card_payments.db')
+        c = conn.cursor()
+        # Get all the data from the table
+        c.execute('SELECT * FROM payments')
+        data = c.fetchall()
+        conn.close()
+        return data
+
+    @staticmethod
+    def update_data(visa_count, mastercard_count, maestro_count, vpay_count, selected_date):
+        """
+        Update the card payment data in the database for the selected date.
+        Args:
+            visa_count (int): Count of Visa card payments.
+            mastercard_count (int): Count of Mastercard payments.
+            maestro_count (int): Count of Maestro card payments.
+            vpay_count (int): Count of Vpay card payments.
+            selected_date (str): The selected date in the form.
+
+        Returns:
+            bool: True if the data is successfully updated, False otherwise.
+        """
+        # Assuming you have the necessary database connection and table setup,
+        # you can write the SQL query or ORM code here to update the data.
+        # For example, using SQL and assuming the table name is 'card_payments':
+        try:
+            conn = sqlite3.connect('card_payments.db')  # Replace with your actual database connection function
+            cursor = conn.cursor()
+            update_query = "UPDATE payments SET visa=?, mastercard=?, maestro=?, vpay=?, total=? WHERE Date=?"
+            total = visa_count + mastercard_count + maestro_count + vpay_count
+            data_to_update = (visa_count, mastercard_count, maestro_count, vpay_count,total, selected_date)
+            cursor.execute(update_query, data_to_update)
+            conn.commit()
+            conn.close()
+            return True
+        except Exception as e:
+            print(f"Error updating data: {e}")
+            return False
+        
+    @staticmethod
+    def insert_data(visa_count, mastercard_count, maestro_count, vpay_count):
+        total = visa_count + mastercard_count + maestro_count + vpay_count
+        conn = sqlite3.connect('card_payments.db')
+        c = conn.cursor()
+        # Insert the input values into the table, including the total count
+        c.execute(f'INSERT INTO payments (visa, mastercard, maestro, vpay,total) VALUES (?, ?, ?, ?,?)',
+                  (visa_count, mastercard_count, maestro_count, vpay_count,total))
+        conn.commit()
+        conn.close()

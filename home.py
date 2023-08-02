@@ -4,8 +4,8 @@ import pandas as pd
 from PIL import Image
 from MontlyReport import main as ds_main
 from Comparator import main as comp_main
-
-# Create containers for different sections of the app
+from card_payments import new_card_ppayment ,update_card_payments
+from giftcards import new_giftcard_ppayment ,update_giftcard_payments
 dashboard = st.container()
 headerSection = st.container()
 mainSection = st.container()
@@ -14,6 +14,8 @@ logOutSection = st.container()
 registrationSection = st.container()
 comparatorSection = st.container()
 pagesMenuSection = st.container()
+card_paymentsSection = st.container()
+gift_card_paymentsSection = st.container()
 
 
 # Implement your login and user authentication logic here.
@@ -169,22 +171,34 @@ def show_comparator_page():
     with comparatorSection:
         comp_main()
 
-
+def show_card_payments_page():
+    """
+    Display the Card Payments page.
+    """
+    with card_paymentsSection:
+        new_card_ppayment()
+        update_card_payments()
+def gift_card_payments_page():
+    with gift_card_paymentsSection:
+        new_giftcard_ppayment()
+        update_giftcard_payments()
 def show_pages_menu():
     """
     Display the pages menu.
     """
     st.sidebar.title("Menu")
-    selection = st.sidebar.radio("Go to", ["Update Information", "Monthly Overview", "Comparator Tool"])
+    selection = st.sidebar.radio("Go to", ["Update Information", "Monthly Overview", "Compare Productrs","Card Payments","Gift Card Payments"])
     if selection == "Update Information":
         show_users_db()
     elif selection == "Monthly Overview":
         show_dashboard_page()
-    elif selection == "Comparator Tool":
-        show_comparator_page()       
-    else:
-        st.title("Home Page")
-        st.write("Welcome to the home page!")
+    elif selection == "Compare Productrs":
+        show_comparator_page()   
+    elif selection == "Card Payments":
+        show_card_payments_page()  
+    elif selection == "Gift Card Payments":
+        gift_card_payments_page()    
+    
 def show_samsam():
     img=Image.open('imgs/logo_465x320.png')
     st.image(img, width=700)

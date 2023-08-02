@@ -95,6 +95,7 @@ def visualize_top_10_products(df, identifier,no_of_products):
     ax.set_title(f'Top 10 Products by {identifier.capitalize()}')
     ax.set_xticklabels(top_10_products.index, rotation=90, ha='right')
     return fig
+
 def main():
     """
     Main function to run the Streamlit app.
@@ -111,5 +112,3 @@ def main():
     identifier1 = st.radio('Select category', ['food', 'drinks','unknown','unasigned'],horizontal=True)
     no_products=st.slider('Top', 0, 25, 10)
     st.pyplot(visualize_top_10_products(filter_by_category(df, identifier1),identifier,no_products))
-if __name__ == "__main__":
-    main()
