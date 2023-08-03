@@ -68,6 +68,7 @@ def show_logout_page():
     loginSection.empty()
     with logOutSection:
         st.sidebar.button("Log Out", key="logout", on_click=LoggedOut_Clicked)
+        st.session_state['loggedIn'] = False
 
 
 def LoggedIn_Clicked(userName, password):
@@ -81,7 +82,7 @@ def LoggedIn_Clicked(userName, password):
     if login(userName, password):
         st.session_state['loggedIn'] = True
         st.sidebar.write("Logged in as: " + userName)
-        
+        st.session_state['userName'] = userName
     else:
         st.session_state['loggedIn'] = False
         st.error("Invalid user name or password")
@@ -223,7 +224,7 @@ def main():
     """
     Main function to run the Streamlit app.
     """
-    
+    st.sidebar.write("Last Active User:", st.session_state['userName'] if 'userName' in st.session_state else "None")
     if 'loggedIn' not in st.session_state:
         st.session_state['loggedIn'] = False
     if st.session_state['loggedIn']:
