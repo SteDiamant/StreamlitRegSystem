@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-
+st.set_page_config(layout='wide')
 def read_data():
     """
     Read data from the CSV file.
@@ -100,6 +100,7 @@ def main():
     """
     Main function to run the Streamlit app.
     """
+    
     df = read_data()
     df = append_category_to_dataset(df)
     st.title('Product Comparison based on Revenue')

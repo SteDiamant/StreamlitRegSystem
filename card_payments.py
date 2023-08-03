@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from database import Card
+import matplotlib.pyplot as plt
+
+
 def new_card_ppayment():
     with st.form(key='Card Payments'):
         st.title('New Card Payments')
@@ -75,3 +78,56 @@ def update_card_payments():
             Card.update_data(visa_count,mastercard_count,maestro_count,vpay_count,day_choice)
             st.experimental_rerun()
     st.write(df)
+
+
+class CardPaymentsVisualisation:
+    def __init__(self) -> None:
+        df = pd.DataFrame(Card.get_all_data(), columns=('Visa', 'Mastercard', 'Maestro', 'Vpay', 'Total', 'Date'))
+        df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
+        df.sort_values(by='Date', inplace=True)
+        self.df = df
+        
+    def visualize_card_payments_over_time(self):
+        choices=st.multiselect('Select Card Type', self.df.columns[0:4])
+        fig,axis=plt.subplots()
+        fig=plt.figure(figsize=(8, 3))
+        for i in choices:
+            plt.plot(self.df['Date'], self.df[i], label=i)
+            plt.legend()
+        plt.xlabel('Date')
+        plt.xticks(rotation=45)
+        plt.ylabel('Payment Amount')
+        plt.title('Card Payments Over Time')
+        return fig
+    
+    def visualize_bar_totals(self):
+        fig,axis=plt.subplots()
+        fig=plt.figure(figsize=(8, 6))
+        plt.bar(self.df['Date'],self.df['Total'])
+        plt.xlabel('Date')
+        plt.ylabel(':euro:')
+        plt.title('Total Payments Over Time')
+        return fig
+    def visualize_total_per_card(self):
+        """
+            Bar Plot that show the total amount for each column bui the last one
+        """
+        fig,axis=plt.subplots()
+        fig=plt.figure(figsize=(10, 6))
+        plt.bar(self.df.columns[0:4],self.df.iloc[:,0:4].sum())
+        plt.xlabel('Card Type')
+        plt.ylabel(':euro:')
+        plt.title('Total Payments Per Card')
+        return fig
+
+    def main():
+        visualization = CardPaymentsVisualisation()
+        print(visualization.df)
+        st.title('Card Payments')
+        c1,c2=st.columns(2)
+        with c1:
+            st.pyplot(visualization.visualize_total_per_card())
+        with c2:
+            st.pyplot(visualization.visualize_bar_totals())
+        st.pyplot(visualization.visualize_card_payments_over_time())
+

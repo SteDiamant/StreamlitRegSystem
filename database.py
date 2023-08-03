@@ -3,7 +3,8 @@ import streamlit as st
 import sqlite3
 import hashlib
 import requests
-
+import random
+from datetime import datetime, timedelta
 def create_users_table():
     """
     Create the 'users' table in the database if it doesn't exist.
@@ -526,7 +527,35 @@ class Card():
         except Exception as e:
             print(f"Error updating data: {e}")
             return False
-        
+
+
+    @staticmethod
+    def insert_100_data_into_existing_table():
+        # Connect to the SQLite database
+        db_connection = sqlite3.connect("card_payments.db")
+        cursor = db_connection.cursor()
+
+        # Generate and insert 100 entries into the 'payments' table
+        for _ in range(100):
+            visa = random.randint(1, 200)
+            mastercard = random.randint(1, 200)
+            maestro = random.randint(1, 200)
+            vpay = random.randint(1, 200)
+            total = visa + mastercard + maestro + vpay
+            timestamp = datetime.now() - timedelta(days=random.randint(0, 30))
+
+            insert_query = (
+                "INSERT INTO payments (visa, mastercard, maestro, vpay, total, date) "
+                "VALUES (?, ?, ?, ?, ?, ?)"
+            )
+            data = (visa, mastercard, maestro, vpay, total, timestamp)
+            cursor.execute(insert_query, data)
+
+        # Commit the changes and close the connection
+        db_connection.commit()
+        db_connection.close()
+
+
     @staticmethod
     def insert_data(visa_count, mastercard_count, maestro_count, vpay_count):
         total = visa_count + mastercard_count + maestro_count + vpay_count

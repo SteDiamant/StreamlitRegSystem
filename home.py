@@ -4,7 +4,7 @@ import pandas as pd
 from PIL import Image
 from MontlyReport import main as ds_main
 from Comparator import main as comp_main
-from card_payments import new_card_ppayment ,update_card_payments
+from card_payments import new_card_ppayment ,update_card_payments , CardPaymentsVisualisation
 from giftcards import new_giftcard_ppayment ,update_giftcard_payments
 from debiteurs import new_invoice, update_invoice
 
@@ -68,7 +68,6 @@ def show_logout_page():
     loginSection.empty()
     with logOutSection:
         st.sidebar.button("Log Out", key="logout", on_click=LoggedOut_Clicked)
-        st.session_state['loggedIn'] = False
 
 
 def LoggedIn_Clicked(userName, password):
@@ -81,8 +80,9 @@ def LoggedIn_Clicked(userName, password):
     """
     if login(userName, password):
         st.session_state['loggedIn'] = True
-        st.sidebar.write("Logged in as: " + userName)
         st.session_state['userName'] = userName
+        
+        
     else:
         st.session_state['loggedIn'] = False
         st.error("Invalid user name or password")
@@ -182,6 +182,7 @@ def show_card_payments_page():
     """
     with card_paymentsSection:
         new_card_ppayment()
+        CardPaymentsVisualisation.main()
         update_card_payments()
 
 def gift_card_payments_page():
@@ -201,7 +202,9 @@ def show_pages_menu():
     """
     Display the pages menu.
     """
+    st.sidebar.write("Logged in as: " + st.session_state.userName)
     st.sidebar.title("Menu")
+    
     selection = st.sidebar.radio("Go to", ["Update Information", "Monthly Overview", "Compare Productrs","Card Payments","Invoice Control","Gift Card Payments"])
     if selection == "Update Information":
         show_users_db()
@@ -224,7 +227,7 @@ def main():
     """
     Main function to run the Streamlit app.
     """
-    st.sidebar.write("Last Active User:", st.session_state['userName'] if 'userName' in st.session_state else "None")
+    
     if 'loggedIn' not in st.session_state:
         st.session_state['loggedIn'] = False
     if st.session_state['loggedIn']:
@@ -233,7 +236,7 @@ def main():
     else:
         show_login_page()
             
-
+    st.sidebar.write("Last Used By: " + st.session_state.userName)
 
 if __name__ == "__main__":
     main()
