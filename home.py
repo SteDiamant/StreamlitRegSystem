@@ -4,7 +4,8 @@ import pandas as pd
 from PIL import Image
 from MontlyReport import main as ds_main
 from Comparator import main as comp_main
-from card_payments import new_card_ppayment ,update_card_payments , CardPaymentsVisualisation
+from card_payments import new_card_ppayment ,update_card_payments 
+from card_payments import CardPaymentsVisualisation
 from giftcards import new_giftcard_ppayment ,update_giftcard_payments
 from debiteurs import new_invoice, update_invoice
 
