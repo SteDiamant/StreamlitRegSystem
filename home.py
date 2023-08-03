@@ -228,7 +228,9 @@ def main():
     """
     Main function to run the Streamlit app.
     """
-    
+    if 'session_state' not in st.session_state:
+        st.session_state.session_state = {}
+
     if 'loggedIn' not in st.session_state:
         st.session_state['loggedIn'] = False
     if st.session_state['loggedIn']:
@@ -238,6 +240,6 @@ def main():
         show_login_page()
     
     st.sidebar.write("Last Used By: " + st.session_state.userName)
-    st.session_state['userName'] = "None"
+    
 if __name__ == "__main__":
     main()
