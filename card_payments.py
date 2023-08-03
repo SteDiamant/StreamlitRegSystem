@@ -90,7 +90,7 @@ class CardPaymentsVisualisation:
     def visualize_card_payments_over_time(self):
         choices=st.multiselect('Select Card Type', self.df.columns[0:4])
         fig,axis=plt.subplots()
-        fig=plt.figure(figsize=(8, 3))
+        fig=plt.figure(figsize=(10, 3))
         for i in choices:
             plt.plot(self.df['Date'], self.df[i], label=i)
             plt.legend()
@@ -102,7 +102,7 @@ class CardPaymentsVisualisation:
     
     def visualize_bar_totals(self):
         fig,axis=plt.subplots()
-        fig=plt.figure(figsize=(8, 6))
+        fig=plt.figure(figsize=(10, 6))
         plt.bar(self.df['Date'],self.df['Total'])
         plt.xlabel('Date')
         plt.ylabel(':euro:')
