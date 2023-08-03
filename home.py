@@ -230,7 +230,8 @@ def main():
     """
     if 'session_state' not in st.session_state:
         st.session_state.session_state = {}
-
+    if st.session_state.userName not in st.session_state:
+        st.session_state.userName = ""
     if 'loggedIn' not in st.session_state:
         st.session_state['loggedIn'] = False
     if st.session_state['loggedIn']:
