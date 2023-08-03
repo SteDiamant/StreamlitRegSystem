@@ -228,8 +228,8 @@ def main():
     """
     Main function to run the Streamlit app.
     """
-    if 'session_state' not in st.session_state:
-        st.session_state.session_state = {}
+    if 'userName' not in st.session_state:
+        st.session_state.userName = "DefaultUserName"
     if st.session_state.userName not in st.session_state:
         st.session_state.userName = ""
     if 'loggedIn' not in st.session_state:
