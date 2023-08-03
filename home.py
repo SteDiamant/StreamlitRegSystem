@@ -236,7 +236,7 @@ def main():
         show_pages_menu()
     else:
         show_login_page()
-            
+    st.session_state['userName'] = "NONE"
     st.sidebar.write("Last Used By: " + st.session_state.userName)
 
 if __name__ == "__main__":
