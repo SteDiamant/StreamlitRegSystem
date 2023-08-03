@@ -80,6 +80,8 @@ def LoggedIn_Clicked(userName, password):
     """
     if login(userName, password):
         st.session_state['loggedIn'] = True
+        st.sidebar.write("Logged in as: " + userName)
+        
     else:
         st.session_state['loggedIn'] = False
         st.error("Invalid user name or password")
@@ -212,7 +214,7 @@ def show_pages_menu():
         gift_card_payments_page()    
     elif selection == "Invoice Control":
         show_invoice_control_page()
-    
+    st.sidebar.image('imgs/logo_465x320.png', width=200)
 def show_samsam():
     img=Image.open('imgs/logo_465x320.png')
     st.image(img, width=700)
@@ -221,7 +223,7 @@ def main():
     """
     Main function to run the Streamlit app.
     """
-  
+    
     if 'loggedIn' not in st.session_state:
         st.session_state['loggedIn'] = False
     if st.session_state['loggedIn']:
